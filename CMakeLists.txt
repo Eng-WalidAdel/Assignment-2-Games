@@ -7,4 +7,5 @@ include_directories(.)
 
 add_executable(Games_Assignment
         implementation.cpp
-        implementation.h)
+        implementation.h
+        "Assignment demo without AI Bonus/implem_Walid.cpp")
