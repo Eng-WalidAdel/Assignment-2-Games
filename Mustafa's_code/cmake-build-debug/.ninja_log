@@ -1,0 +1,6 @@
+# ninja log v5
+3	1168	7559158203811504	CMakeFiles/Assignment_Demo.dir/main.cpp.obj	6976946954280d4b
+1	128	7559167342854307	build.ninja	cafc6e0dfc3816fa
+1168	1249	7559158204591723	Assignment_Demo.exe	3dab53ee5c1f1ed8
+2	989	7559167451193028	CMakeFiles/Assignment_Demo.dir/main.cpp.obj	20b2472932d969c7
+989	1079	7559167452068137	Assignment_Demo.exe	3dab53ee5c1f1ed8
