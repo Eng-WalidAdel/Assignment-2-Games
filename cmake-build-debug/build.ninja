@@ -49,19 +49,12 @@ cmake_ninja_workdir = D$:/Games$ Assignment/cmake-build-debug/
 
 build cmake_object_order_depends_target_Games_Assignment: phony || .
 
-build CMakeFiles/Games_Assignment.dir/implementation.cpp.obj: CXX_COMPILER__Games_Assignment_unscanned_Debug D$:/Games$ Assignment/implementation.cpp || cmake_object_order_depends_target_Games_Assignment
-  DEP_FILE = CMakeFiles\Games_Assignment.dir\implementation.cpp.obj.d
+build CMakeFiles/Games_Assignment.dir/main.cpp.obj: CXX_COMPILER__Games_Assignment_unscanned_Debug D$:/Games$ Assignment/main.cpp || cmake_object_order_depends_target_Games_Assignment
+  DEP_FILE = CMakeFiles\Games_Assignment.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -I"D:/Games Assignment/."
   OBJECT_DIR = CMakeFiles\Games_Assignment.dir
   OBJECT_FILE_DIR = CMakeFiles\Games_Assignment.dir
-
-build CMakeFiles/Games_Assignment.dir/Assignment_demo_without_AI_Bonus/implem_Walid.cpp.obj: CXX_COMPILER__Games_Assignment_unscanned_Debug D$:/Games$ Assignment/Assignment$ demo$ without$ AI$ Bonus/implem_Walid.cpp || cmake_object_order_depends_target_Games_Assignment
-  DEP_FILE = CMakeFiles\Games_Assignment.dir\Assignment_demo_without_AI_Bonus\implem_Walid.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"D:/Games Assignment/."
-  OBJECT_DIR = CMakeFiles\Games_Assignment.dir
-  OBJECT_FILE_DIR = CMakeFiles\Games_Assignment.dir\Assignment_demo_without_AI_Bonus
 
 
 # =============================================================================
@@ -71,7 +64,7 @@ build CMakeFiles/Games_Assignment.dir/Assignment_demo_without_AI_Bonus/implem_Wa
 #############################################
 # Link the executable Games_Assignment.exe
 
-build Games_Assignment.exe: CXX_EXECUTABLE_LINKER__Games_Assignment_Debug CMakeFiles/Games_Assignment.dir/implementation.cpp.obj CMakeFiles/Games_Assignment.dir/Assignment_demo_without_AI_Bonus/implem_Walid.cpp.obj
+build Games_Assignment.exe: CXX_EXECUTABLE_LINKER__Games_Assignment_Debug CMakeFiles/Games_Assignment.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Games_Assignment.dir

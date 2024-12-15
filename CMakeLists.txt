@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Games_Assignment
-        implementation.cpp
+#        implementation.cpp
         implementation.h
-        "Assignment demo without AI Bonus/implem_Walid.cpp")
+        main.cpp
+#        "Assignment demo without AI Bonus/implem_Walid.cpp"
+)
