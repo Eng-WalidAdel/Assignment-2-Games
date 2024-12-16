@@ -128,8 +128,8 @@ public:
 template <typename T>
 class Pyramid_Random_Player : public RandomPlayer<T> {
 public:
-    Pyramid_Random_Player(T player_symbol) : RandomPlayer<T>(player_symbol) {
-        this->name = "Random Computer Player";
+    Pyramid_Random_Player(string name, T player_symbol) : RandomPlayer<T>(name,player_symbol) {
+
         srand(static_cast<unsigned int> ( time(0) ));  // Seed the random number generator
     }
 

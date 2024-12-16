@@ -43,7 +43,7 @@ protected:
     int dimension_x{} , dimension_y{};
 public:
 
-    Four_in_a_row_random_player (T symbol);
+    Four_in_a_row_random_player (string name,T symbol);
 
     void getmove(int& x, int& y);
 };
@@ -227,7 +227,7 @@ void Four_in_a_row_player <T> ::  getmove (int& x , int& y)
 
 // Constructor for X_O_Random_Player
 template <typename T>
-Four_in_a_row_random_player<T> :: Four_in_a_row_random_player (T symbol) : RandomPlayer<T>(symbol)  {
+Four_in_a_row_random_player<T> :: Four_in_a_row_random_player (string name,T symbol) : RandomPlayer<T>(name,symbol)  {
     this->dimension_x = 6;
     this->dimension_y = 7;
     this->name = "\nRandom Computer Player";

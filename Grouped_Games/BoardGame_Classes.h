@@ -13,6 +13,7 @@ protected:
     int n_moves = 0;
 
 public:
+    virtual ~Board() = default;
 
 
     /// Return true if move is valid and put it on the board
@@ -31,6 +32,7 @@ public:
 
     /// Return true if the game is over
     virtual bool game_is_over() = 0;
+
 };
 
 template <typename T>
@@ -40,6 +42,8 @@ protected:
     T symbol;
     Board<T>* boardPtr;  // Pointer to the board
 public:
+    virtual ~Player() = default;
+
     /// Two constructors to initiate players
     /// Give the player a symbol to use in playing
     /// It can be X, O, or others
@@ -62,7 +66,9 @@ protected:
     int dimension;
 public:
     // Take a symbol and pass it to the parent
-    RandomPlayer(T symbol);
+
+    RandomPlayer(string name, T symbol);
+
     // Generate a random move
     virtual void getmove(int& x, int& y) = 0;
 };
@@ -77,6 +83,13 @@ public:
 
     void run();
 };
+
+
+//--------------------------------------- IMPLEMENTATION
+
+#include <iostream>
+using namespace std;
+
 
 
 //--------------------------------------- IMPLEMENTATION
@@ -134,7 +147,7 @@ Player<T>::Player(T symbol) {
 
 // Constructor for RandomPlayer, passing the symbol to the parent Player class
 template <typename T>
-RandomPlayer<T>::RandomPlayer(T symbol) : Player<T>(symbol) {}
+RandomPlayer<T>::RandomPlayer(string name,T symbol) : Player<T>( name,symbol) {}
 
 // Getter for player's name
 template <typename T>
@@ -153,25 +166,6 @@ template <typename T>
 void Player<T>::setBoard(Board<T>* b) {
     this->boardPtr = b;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif //_BOARDGAME_CLASSES_H
 

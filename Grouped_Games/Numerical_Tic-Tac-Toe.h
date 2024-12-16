@@ -43,7 +43,7 @@ class Numerical_Tic_Tac_Toe_random_player : public RandomPlayer <T> {
 protected:
     vector <int> available_numbers;
 public:
-    Numerical_Tic_Tac_Toe_random_player (T symbol);
+    Numerical_Tic_Tac_Toe_random_player (string name,T symbol);
 
     void getmove(int& x, int& y);
 };
@@ -256,7 +256,7 @@ void Numerical_Tic_Tac_Toe_player<T>::getmove(int& x, int& y) {
 
 // Constructor for X_O_Random_Player
 template <typename T>
-Numerical_Tic_Tac_Toe_random_player<T> :: Numerical_Tic_Tac_Toe_random_player (T symbol) : RandomPlayer<T>(symbol)  {
+Numerical_Tic_Tac_Toe_random_player<T> :: Numerical_Tic_Tac_Toe_random_player (string name,T symbol) : RandomPlayer<T>(name,symbol)  {
     this->dimension = 3;
     this->name = "Random Computer Player";
     srand(static_cast<unsigned int> ( time(0) ));  // Seed the random number generator
