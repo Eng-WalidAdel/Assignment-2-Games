@@ -21,17 +21,17 @@ public:
 
 // player
 template <typename T>
-class X_O_Player : public Player<T> {
+class X6_O6_Player : public Player<T> {
 public:
-    X_O_Player (string name, T symbol);
+    X6_O6_Player (string name, T symbol);
     void getmove(int& x, int& y) ;
 
 };
 
 template <typename T>
-class X_O_Random_Player : public RandomPlayer<T>{
+class X6_O6_Random_Player : public RandomPlayer<T>{
 public:
-    X_O_Random_Player (string name ,T symbol);
+    X6_O6_Random_Player (string name ,T symbol);
     void getmove(int &x, int &y) ;
 };
 
@@ -146,22 +146,22 @@ bool X6_O6_Board<T>::game_is_over() {
 
 // player section
 template <typename T>
-X_O_Player<T>::X_O_Player(string name, T symbol) : Player<T>(name, symbol) {}
+X6_O6_Player<T>::X6_O6_Player(string name, T symbol) : Player<T>(name, symbol) {}
 
 template <typename T>
-void X_O_Player<T>::getmove(int& x, int& y) {
+void X6_O6_Player<T>::getmove(int& x, int& y) {
     cout << "\nPlease enter your move x and y (0 to 4) separated by spaces: ";
     cin >> x >> y;
 }
 
 template <typename T>
-X_O_Random_Player<T>::X_O_Random_Player(string name,T symbol) : RandomPlayer<T>(name,symbol) {
+X6_O6_Random_Player<T>::X6_O6_Random_Player(string name,T symbol) : RandomPlayer<T>(name,symbol) {
     this->dimension = 5;
     srand(static_cast<unsigned int>(time(0)));
 }
 
 template <typename T>
-void X_O_Random_Player<T>::getmove(int& x, int& y) {
+void X6_O6_Random_Player<T>::getmove(int& x, int& y) {
     x = rand() % this->dimension;
     y = rand() % this->dimension;
 }
