@@ -69,7 +69,6 @@ bool X5_O5_Board<T>::update_board(int x, int y, T mark)  {
 
         return true;
     }
-
     return false;
 }
 template <typename T>

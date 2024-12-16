@@ -167,24 +167,5 @@ void Player<T>::setBoard(Board<T>* b) {
     this->boardPtr = b;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif //_BOARDGAME_CLASSES_H
 

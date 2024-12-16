@@ -1,24 +1,20 @@
 
-#ifndef _5X5X_O_H
-#define _5X5X_O_H
+#ifndef _GAME6_H
+#define _GAME6_H
 
 #include <iomanip>
 
 #include "BoardGame_Classes.h"
 
 template <typename T>
-class X5_O5_Board:public Board<T> {
+class X6_O6_Board:public Board<T> {
 public:
-    X5_O5_Board ();
+    X6_O6_Board ();
     bool update_board (int x , int y , T mark) override;
     void display_board () override;
     bool is_win() override ;
     bool is_draw() override;
     bool game_is_over() override;
-    int x_score();
-    int y_score();
-    int countX=0;
-    int countY=0;
 
 
 };
@@ -42,7 +38,7 @@ public:
 
 //========================== IMPLEMENTATION ===========================================
 template <typename T>
-X5_O5_Board<T>::X5_O5_Board() {
+X6_O6_Board<T>::X6_O6_Board() {
     this->rows = this->columns = 5;
     this->board = new char*[this->rows];
 
@@ -55,7 +51,7 @@ X5_O5_Board<T>::X5_O5_Board() {
     this->n_moves = 0;
 }
 template <typename T>
-bool X5_O5_Board<T>::update_board(int x, int y, T mark)  {
+bool X6_O6_Board<T>::update_board(int x, int y, T mark)  {
     // Only update if move is valid
     if (!(x < 0 || x >= this->rows || y < 0 || y >= this->columns) && (this->board[x][y] == 0|| mark == 0)) {
         if (mark == 0){
@@ -69,11 +65,10 @@ bool X5_O5_Board<T>::update_board(int x, int y, T mark)  {
 
         return true;
     }
-
     return false;
 }
 template <typename T>
-void X5_O5_Board<T>::display_board()  {
+void X6_O6_Board<T>::display_board()  {
     for (int i = 0; i < this->rows; i++) {
         cout << "\n| ";
         for (int j = 0; j < this->columns; j++) {
@@ -87,125 +82,66 @@ void X5_O5_Board<T>::display_board()  {
 
 template <typename T>
 
-bool X5_O5_Board<T>::is_win()  {
+bool X6_O6_Board<T>::is_win()  {
 
-    static bool p2_win = false;
-    if (p2_win) {
-        return true;
-    }
-    if (this->n_moves < 23) {
-        return false;
+    static bool p_win = false;
+    if(p_win) {return true;}
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->columns - 2; ++j) {
+            if (this->board[i][j] != 0 &&
+                this->board[i][j] == this->board[i][j + 1] &&
+                this->board[i][j] == this->board[i][j + 2]) {
+                 p_win = true;
+                return false;
+                }
+        }
     }
 
-    if (x_score() > y_score()) {
-        return true;
+    for (int i = 0; i < this->rows - 2; ++i) {
+        for (int j = 0; j < this->columns; ++j) {
+            if (this->board[i][j] != 0 &&
+                this->board[i][j] == this->board[i + 1][j] &&
+                this->board[i][j] == this->board[i + 2][j]) {
+                p_win = true;
+                return false;
+                }
+        }
     }
-    if (y_score() > x_score()) {
-        p2_win = true;
-        return false;
+    // check diagonals
+    for (int i = 0; i < this->rows - 2; ++i) {
+        for (int j = 0; j < this->columns - 2; ++j) {
+            if (this->board[i][j] != 0 &&
+                this->board[i][j] == this->board[i + 1][j + 1] &&
+                this->board[i][j] == this->board[i + 2][j + 2]) {
+                p_win = true;
+                return false;
+                }
+        }
+    }
+
+    for (int i = 0; i < this->rows - 2; ++i) {
+        for (int j = 2; j < this->columns; ++j) {
+            if (this->board[i][j] != 0 &&
+                this->board[i][j] == this->board[i + 1][j - 1] &&
+                this->board[i][j] == this->board[i + 2][j - 2]) {
+                p_win = true;
+                return false;
+                }
+        }
     }
     return false;
-
 }
 
+
+
 template <typename T>
-bool X5_O5_Board<T>::is_draw() {
+bool X6_O6_Board<T>::is_draw() {
     if (this->n_moves == 25) {return true;}
     return (this->n_moves >= 24 && !is_win());
 }
 template<typename T>
-bool X5_O5_Board<T>::game_is_over() {
+bool X6_O6_Board<T>::game_is_over() {
     return is_win() || is_draw();
-}
-
-template<typename T>
-int X5_O5_Board<T>::x_score() {
-    countX=0;
-    for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < this->columns - 2; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='X'&&
-                this->board[i][j] == this->board[i][j + 1] &&
-                this->board[i][j] == this->board[i][j + 2]) {
-                countX++;
-                }
-        }
-    }
-
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 0; j < this->columns; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='X'&&
-                this->board[i][j] == this->board[i + 1][j] &&
-                this->board[i][j] == this->board[i + 2][j]) {
-                countX++;
-                }
-        }
-    }
-    // check diagonals
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 0; j < this->columns - 2; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='X'&&
-                this->board[i][j] == this->board[i + 1][j + 1] &&
-                this->board[i][j] == this->board[i + 2][j + 2]) {
-                countX++;
-                }
-        }
-    }
-
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 2; j < this->columns; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='X'&&
-                this->board[i][j] == this->board[i + 1][j - 1] &&
-                this->board[i][j] == this->board[i + 2][j - 2]) {
-                countX++;
-                }
-        }
-    }
-    return countX;
-}
-
-template<typename T>
-int X5_O5_Board<T>::y_score() {
-    countY=0;
-    for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < this->columns - 2; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='O'&&
-                this->board[i][j] == this->board[i][j + 1] &&
-                this->board[i][j] == this->board[i][j + 2]) {
-                countY++;
-                }
-        }
-    }
-
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 0; j < this->columns; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='O'&&
-                this->board[i][j] == this->board[i + 1][j] &&
-                this->board[i][j] == this->board[i + 2][j]) {
-                countY++;
-                }
-        }
-    }
-    // check diagonals
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 0; j < this->columns - 2; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='O'&&
-                this->board[i][j] == this->board[i + 1][j + 1] &&
-                this->board[i][j] == this->board[i + 2][j + 2]) {
-                countY++;
-                }
-        }
-    }
-
-    for (int i = 0; i < this->rows - 2; ++i) {
-        for (int j = 2; j < this->columns; ++j) {
-            if (this->board[i][j] != 0 &&this->board[i][j]=='O'&&
-                this->board[i][j] == this->board[i + 1][j - 1] &&
-                this->board[i][j] == this->board[i + 2][j - 2]) {
-                countY++;
-                }
-        }
-    }
-    return countY;
 }
 
 // player section
