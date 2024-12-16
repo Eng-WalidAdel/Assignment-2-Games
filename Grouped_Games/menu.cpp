@@ -7,7 +7,7 @@
 #include "4 x 4 Tic-Tac-Toe.h"
 using namespace std;
 
-void game1();
+int game1();
 int game2();
 int game3();
 int game4();
@@ -15,6 +15,7 @@ int game5();
 int game6();
 int game7();
 int game8();
+int valid_choice(string);
 
 void displayMenu() {
     cout << "\n========== Game Menu ==========" << endl;
@@ -41,8 +42,19 @@ int main() {
 //        system("clear");
 //#endif
 
-        displayMenu();
-        cin >> choice;
+        while (true) {
+            displayMenu();
+            cin >> choice;
+
+            // Check if input is valid
+            if (cin.fail()) {
+                cin.clear();                     // Clear the fail state
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                cout << "\nInvalid input. Please enter valid choice.\n";
+            } else {
+                break; // Exit loop if input is valid
+            }
+        }
 
         switch (choice) {
             case 1: game1(); break;
@@ -68,62 +80,60 @@ int main() {
     return 0;
 }
 
-void game1() {
+
+int game1(){
     cout << "\nYou chose Game 1!" << endl;
-    Pyramid_Board<char> board;
+    Player<char>* players[2];
+    Board <char> * B = new Pyramid_Board <char>();
 
-    string player1_name, player2_name;
-    cout << "Enter Player 1 name: ";
-    cin >> player1_name;
-    Pyramid_Player<char> player1(player1_name, 'X');
+    string player1Name, player2Name;
 
-    cout << "Enter Player 2 name (or type 'AI' for a random player): ";
-    cin >> player2_name;
+    cout << "Welcome to Pyramic Tic-Tac-Toe Game. :)\n";
 
-    Player<char>* player2;
-    if (player2_name == "AI") {
-        player2 = new Pyramid_Random_Player<char>('O');
-    } else {
-        player2 = new Pyramid_Player<char>(player2_name, 'O');
+    // Set up player 1
+    switch(valid_choice("1")) {
+        case 1:
+            cout << "Enter Player 1 name:";
+            cin >> player1Name;
+            players[0] = new Pyramid_Player <char> (player1Name, 'X');
+            break;
+        case 2:
+            players[0] = new Pyramid_Random_Player <char> ('X');
+            break;
+        default:
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+            return 1;
     }
 
-    cout << "\nGame Instructions:\n";
-    cout << "1. The board positions are shown as (row,col).\n";
-    cout << "2. To make a move, input the row and column numbers (e.g., 2 3).\n";
-    cout << "3. The game ends when a player wins or the board is full.\n";
-    cout << "Let's start!\n";
+    players[0]->setBoard(B);
 
-    bool game_over = false;
-    Player<char>* current_player = &player1;
-    int x, y;
+    // Set up player 2
+    switch(valid_choice("2")) {
+        case 1:
+            cout << "Enter Player 2 name:";
+            cin >> player2Name;
+            players[1] = new Pyramid_Player <char>(player2Name, 'O');
+            break;
+        case 2:
+            players[1] = new Pyramid_Random_Player<char>('O');
+            break;
+        default:
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+            return 1;
+    }
+    players[1]->setBoard(B);
 
-    while (!game_over) {
-        board.display_board();
-        cout << current_player->getname() << "'s turn (symbol: " << current_player->getsymbol() << ")\n";
-        current_player->getmove(x, y);
+    // Create the game manager and run the game
+    GameManager<char> x_o_game (B, players);
+    x_o_game.run();
 
-        if (!board.update_board(x, y, current_player->getsymbol())) {
-            cout << "Invalid move! Position already taken or out of bounds. Try again.\n";
-            continue;
-        }
-
-        if (board.is_win()) {
-            board.display_board();
-            cout << current_player->getname() << " wins!\n";
-            game_over = true;
-        } else if (board.is_draw()) {
-            board.display_board();
-            cout << "It's a draw!\n";
-            game_over = true;
-        } else {
-            current_player = (current_player == &player1) ? player2 : &player1;
-        }
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
     }
 
-    if (player2_name == "AI") {
-        delete player2;
-    }
-
+    return 0;
 }
 
 int game2() {
@@ -131,18 +141,15 @@ int game2() {
     Player<char>* players[2];
     Board <char> * B = new Four_in_a_row_Board <char>();
 
-    int choice;
+
     string player1Name, player2Name;
 
     cout << "Welcome to Connect Four X-O Game. :)\n";
 
     // Set up player 1
-    cout << "Choose Player 1 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             cout << "Enter Player 1 name:";
             cin >> player1Name;
@@ -159,14 +166,10 @@ int game2() {
     players[0]->setBoard(B);
 
     // Set up player 2
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+    switch(valid_choice("2")) {
         case 1:
-            cout << "Enter Player 1 name:";
+            cout << "Enter Player 2 name:";
             cin >> player2Name;
             players[1] = new Four_in_a_row_player <char>(player2Name, 'O');
             break;
@@ -199,47 +202,99 @@ int game3() {
 
 int game4() {
     cout << "\nYou chose Game 4!" << endl;
-    string dict_file = "dic.txt";
-    cout << "Welcome to Word Tic-Tac-Toe!" << endl;
-
-    WordTicTacToe<char> board(3, 3, dict_file);
-
-    HumanPlayer<char> player1("Player 1");
-    HumanPlayer<char> player2("Player 2");
-    Player<char>* players[2] = { &player1, &player2 };
-
-    player1.setBoard(&board);
-    player2.setBoard(&board);
-
-    int x, y;
-    int turn = 0;
-
-    board.display_board();
-    while (!board.game_is_over()) {
-        Player<char>* currentPlayer = players[turn];
-
-        currentPlayer->getmove(x, y);
-
-        while (!board.update_board(x, y, currentPlayer->getsymbol())) {
-            cout << "Invalid move! The position is either out of bounds or already occupied." << endl;
-            currentPlayer->getmove(x, y);
-        }
-
-        board.display_board();
-
-        if (board.is_win()) {
-            cout << currentPlayer->getname() << " wins by forming a valid word!" << endl;
-            return 0;
-        }
-
-        // Check for a draw
-        if (board.is_draw()) {
-            cout << "The game ends in a draw!" << endl;
-            return 0;
-        }
-
-        turn = 1 - turn;
-    }
+//    string dict_file = "dic.txt";
+//    cout << "Welcome to Word Tic-Tac-Toe!" << endl;
+//
+//
+//    Player<char>* players[2];
+//    Board <char> * B = new WordTicTacToe <char> board(3, 3, dict_file);
+//
+//
+//    string player1Name, player2Name;
+//
+//    cout << "Welcome to Pyramic Tic-Tac-Toe Game. :)\n";
+//
+//    // Set up player 1
+//    switch(valid_choice("1")) {
+//        case 1:
+//            cout << "Enter Player 1 name:";
+//            cin >> player1Name;
+//            players[0] = new Pyramid_Player <char> (player1Name, 'X');
+//            break;
+//        case 2:
+//            players[0] = new Pyramid_Random_Player <char> ('X');
+//            break;
+//        default:
+//            cout << "Invalid choice for Player 1. Exiting the game.\n";
+//            return 1;
+//    }
+//
+//    players[0]->setBoard(B);
+//
+//    // Set up player 2
+//    switch(valid_choice("2")) {
+//        case 1:
+//            cout << "Enter Player 2 name:";
+//            cin >> player2Name;
+//            players[1] = new Pyramid_Player <char>(player2Name, 'O');
+//            break;
+//        case 2:
+//            players[1] = new Pyramid_Random_Player<char>('O');
+//            break;
+//        default:
+//            cout << "Invalid choice for Player 2. Exiting the game.\n";
+//            return 1;
+//    }
+//    players[1]->setBoard(B);
+//
+//    // Create the game manager and run the game
+//    GameManager<char> x_o_game (B, players);
+//    x_o_game.run();
+//
+//    // Clean up
+//    delete B;
+//    for (int i = 0; i < 2; ++i) {
+//        delete players[i];
+//    }
+//
+//    return 0;
+//
+//
+//
+//
+//
+//    player1.setBoard(&board);
+//    player2.setBoard(&board);
+//
+//    int x, y;
+//    int turn = 0;
+//
+//    board.display_board();
+//    while (!board.game_is_over()) {
+//        Player<char>* currentPlayer = players[turn];
+//
+//        currentPlayer->getmove(x, y);
+//
+//        while (!board.update_board(x, y, currentPlayer->getsymbol())) {
+//            cout << "Invalid move! The position is either out of bounds or already occupied." << endl;
+//            currentPlayer->getmove(x, y);
+//        }
+//
+//        board.display_board();
+//
+//        if (board.is_win()) {
+//            cout << currentPlayer->getname() << " wins by forming a valid word!" << endl;
+//            return 0;
+//        }
+//
+//        // Check for a draw
+//        if (board.is_draw()) {
+//            cout << "The game ends in a draw!" << endl;
+//            return 0;
+//        }
+//
+//        turn = 1 - turn;
+//    }
 }
 
 int game5() {
@@ -382,4 +437,24 @@ int game7() {
 int game8() {
     cout << "\nYou chose Game 8!" << endl;
     // Add game logic here
+}
+
+int valid_choice(string player_num = ""){
+    int choice;
+    while (true) {
+        cout << "Choose Player " << player_num << " type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cin >> choice;
+
+        // Check if input is valid
+        if (cin.fail()) {
+            cin.clear();                     // Clear the fail state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "\nInvalid input. Please enter valid choice.\n";
+        } else {
+            break; // Exit loop if input is valid
+        }
+    }
+    return choice;
 }

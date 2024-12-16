@@ -40,6 +40,7 @@ public:
     }
 };
 
+
 template <typename T>
 class WordTicTacToe : public Board<T> {
 private:

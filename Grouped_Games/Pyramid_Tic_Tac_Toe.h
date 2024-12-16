@@ -25,9 +25,9 @@ public:
     void display_board() override {
         cout << "\nCurrent Board:\n";
 
-        cout << "        " << (board[0][2] == ' ' ? ".(0,2)" : string(1, board[0][2]) + "(0,2)") << endl;
+        cout << "                      " << (board[0][2] == ' ' ? ".(0,2)" : string(1, board[0][2]) + "(0,2)") << endl;
 
-        cout << "      ";
+        cout << "             ";
         for (int j = 1; j <= 3; ++j) {
             cout << (board[1][j] == ' ' ? ".(" + to_string(1) + "," + to_string(j) + ")" : string(1, board[1][j]) + "(" + to_string(1) + "," + to_string(j) + ")") << "   ";
         }
@@ -99,21 +99,57 @@ public:
     Pyramid_Player(const string& player_name, T player_symbol) : Player<T>(player_name, player_symbol) {}
 
     void getmove(int& x, int& y) override {
-        cout << this->name << ", enter your move (row and column): ";
-        cin >> x >> y;
+
+        while (true) {
+            cout << this->name << ", enter your move (row and column): ";
+            cin >> x >> y;
+
+            // Check if input is valid
+            if (cin.fail() || x < 0 || x > 3 || y < 0 || y > 5) {
+                cin.clear();                     // Clear the fail state
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                cout << "\nInvalid input. Please enter valid coordinates.\n";
+                continue;
+            }
+
+            if ((x == 0 && y == 2) ||
+                (x == 1 && y >= 1 && y <= 3) ||
+                (x == 2 && y >= 0 && y <= 4)) {
+                break; // Valid move
+            }
+            else {
+                cout << "\nInvalid input. Please enter valid coordinates.\n";
+            }
+        }
+
     }
 };
 
 template <typename T>
 class Pyramid_Random_Player : public RandomPlayer<T> {
 public:
-    Pyramid_Random_Player(T player_symbol) : RandomPlayer<T>(player_symbol) {}
+    Pyramid_Random_Player(T player_symbol) : RandomPlayer<T>(player_symbol) {
+        this->name = "Random Computer Player";
+        srand(static_cast<unsigned int> ( time(0) ));  // Seed the random number generator
+    }
 
     void getmove(int& x, int& y) override {
-        x = rand() % 3;
-        y = rand() % 5;
-        cout << this->name << " chooses move: " << x << ", " << y << endl;
+        // Ensure random coordinates are within valid bounds for each row
+        x = rand() % 3;  // Row index (0, 1, or 2)
+
+        // Based on the row (x), restrict the valid column (y)
+        if (x == 0) {
+            y = rand() % 1;  // Only 1 column in the top row
+        } else if (x == 1) {
+            y = rand() % 3;  // 3 columns in the middle row
+        } else {
+            y = rand() % 5;  // 5 columns in the bottom row
+        }
+
+        cout << this->name << " chooses move: (" << x << ", " << y << ")" << endl;
     }
 };
 
 #endif
+
+

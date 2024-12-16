@@ -3,7 +3,7 @@ project(Assignment_Demo)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories("C:/Secondyear_firstsem/Assignment_2/Task_2_/group/Assignment Demo")
+include_directories("C:/Secondyear_firstsem/Assignment_2/Task_2_/GitHub_Games/Grouped_Games")
 
 add_executable(Assignment_Demo
         3x3X_O.h
