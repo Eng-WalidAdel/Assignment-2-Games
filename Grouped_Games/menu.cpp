@@ -5,6 +5,9 @@
 #include "Connect_Four.h"
 #include "Numerical_Tic-Tac-Toe.h"
 #include "4 x 4 Tic-Tac-Toe.h"
+#include"5x5X_O.h"
+#include"Game6.h"
+#include"Ultimate_Board.h"
 using namespace std;
 
 int game1();
@@ -196,9 +199,69 @@ int game2() {
 }
 
 int game3() {
-    cout << "\nYou chose Game 3!" << endl;
-    // Add game logic here
+    int choice;
+    Player<char>* players[2];
+    auto* B = new X5_O5_Board<char>();
+
+
+    string playerXName, player2Name;
+
+    cout << "Welcome to FCAI X-O Game. :)\n";
+
+    // Set up player 1
+    cout << "Enter Player X name: ";
+    cin >> playerXName;
+    cout << "Choose Player X type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[0] = new X5_O5_Player<char>(playerXName, 'X');
+        break;
+        case 2:
+            players[0] = new X5_O5_Random_Player<char>(playerXName,'X');
+        break;
+        default:
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+        return 1;
+    }
+
+    // Set up player 2
+    cout << "Enter Player 2 name: ";
+    cin >> player2Name;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[1] = new X5_O5_Player<char>(player2Name, 'O');
+        break;
+        case 2:
+            players[1] = new X5_O5_Random_Player<char>(player2Name,'O');
+        break;
+        default:
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+        return 1;
+    }
+
+    // Create the game manager and run the game
+
+    GameManager<char> x_o_game(B, players);
+    x_o_game.run();
+
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+
+    return 0;
 }
+
 
 int game4() {
     cout << "\nYou chose Game 4!" << endl;
@@ -295,6 +358,7 @@ int game4() {
 //
 //        turn = 1 - turn;
 //    }
+    return 0;
 }
 
 int game5() {
@@ -365,7 +429,67 @@ int game5() {
 
 int game6() {
     cout << "\nYou chose Game 6!" << endl;
-    // Add game logic here
+    int choice;
+    Player<char>* players[2];
+    auto* B = new X6_O6_Board<char>();
+
+
+    string playerXName, player2Name;
+
+    cout << "Welcome to FCAI X-O Game. :)\n";
+
+    // Set up player 1
+    cout << "Enter Player X name: ";
+    cin >> playerXName;
+    cout << "Choose Player X type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[0] = new X6_O6_Player<char>(playerXName, 'X');
+        break;
+        case 2:
+            players[0] = new X6_O6_Random_Player<char>(playerXName,'X');
+        break;
+        default:
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+        return 1;
+    }
+
+    // Set up player 2
+    cout << "Enter Player 2 name: ";
+    cin >> player2Name;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[1] = new X_O_Player<char>(player2Name, 'O');
+        break;
+        case 2:
+            players[1] = new X_O_Random_Player<char>(player2Name,'O');
+        break;
+        default:
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+        return 1;
+    }
+
+    // Create the game manager and run the game
+
+    GameManager<char> x_o_game(B, players);
+    x_o_game.run();
+
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+
+    return 0;
 }
 
 int game7() {
@@ -436,7 +560,67 @@ int game7() {
 
 int game8() {
     cout << "\nYou chose Game 8!" << endl;
-    // Add game logic here
+    int choice;
+    Player<char>* players[2];
+    auto* B = new Ultimate_Board<char>();
+
+
+    string playerXName, player2Name;
+
+    cout << "Welcome to FCAI X-O Game. :)\n";
+
+    // Set up player 1
+    cout << "Enter Player X name: ";
+    cin >> playerXName;
+    cout << "Choose Player X type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[0] = new X_O_Player<char>(playerXName, 'X');
+        break;
+        case 2:
+            players[0] = new X_O_Random_Player<char>(playerXName,'X');
+        break;
+        default:
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+        return 1;
+    }
+
+    // Set up player 2
+    cout << "Enter Player 2 name: ";
+    cin >> player2Name;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n";
+    cout << "2. Random Computer\n";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            players[1] = new X_O_Player<char>(player2Name, 'O');
+        break;
+        case 2:
+            players[1] = new X_O_Random_Player<char>(player2Name,'O');
+        break;
+        default:
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+        return 1;
+    }
+
+    // Create the game manager and run the game
+
+    GameManager<char> x_o_game(B, players);
+    x_o_game.run();
+
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+
+    return 0;
 }
 
 int valid_choice(string player_num = ""){

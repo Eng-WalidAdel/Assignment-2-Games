@@ -13,6 +13,7 @@ protected:
     int n_moves = 0;
 
 public:
+    virtual ~Board() = default;
 
 
     /// Return true if move is valid and put it on the board
@@ -31,6 +32,7 @@ public:
 
     /// Return true if the game is over
     virtual bool game_is_over() = 0;
+
 };
 
 template <typename T>
@@ -40,6 +42,8 @@ protected:
     T symbol;
     Board<T>* boardPtr;  // Pointer to the board
 public:
+    virtual ~Player() = default;
+
     /// Two constructors to initiate players
     /// Give the player a symbol to use in playing
     /// It can be X, O, or others
@@ -162,25 +166,6 @@ template <typename T>
 void Player<T>::setBoard(Board<T>* b) {
     this->boardPtr = b;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif //_BOARDGAME_CLASSES_H
 

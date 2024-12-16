@@ -13,6 +13,9 @@ add_executable(Assignment_Demo
         MinMaxPlayer.h
 #        P_Tic_Tac_Toe.cpp
         Pyramid_Tic_Tac_Toe.h
+        5x5X_O.h
+        Game6.h
+        Ultimate_Board.h
         Word_Tic_Tc_Toe.h
         Connect_Four.h
         Numerical_Tic-Tac-Toe.h
