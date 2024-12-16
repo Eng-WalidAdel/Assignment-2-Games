@@ -39,7 +39,9 @@ class _4x4_Tic_Tac_Toe_Random_Player : public RandomPlayer<T>{
 protected:
     vector < pair<int,int> > current_coordinates ;
 public:
-    _4x4_Tic_Tac_Toe_Random_Player (T symbol);
+
+    _4x4_Tic_Tac_Toe_Random_Player(string name, T symbol);
+
     void getmove(int &x, int &y) ;
 };
 
@@ -315,7 +317,7 @@ void _4x4_Tic_Tac_Toe_Player<T>::getmove(int& x, int& y) {
 
 // Constructor for _4x4_Tic_Tac_Toe_Random_Player
 template <typename T>
-_4x4_Tic_Tac_Toe_Random_Player<T>::_4x4_Tic_Tac_Toe_Random_Player(T symbol) : RandomPlayer<T>(symbol) {
+_4x4_Tic_Tac_Toe_Random_Player<T>::_4x4_Tic_Tac_Toe_Random_Player(string name,T symbol) : RandomPlayer<T>(name,symbol) {
     this->dimension = 4;
     this->name = "Random Computer Player";
     srand(static_cast<unsigned int>(time(0)));  // Seed the random number generator

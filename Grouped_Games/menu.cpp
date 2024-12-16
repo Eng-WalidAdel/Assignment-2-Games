@@ -101,7 +101,7 @@ int game1(){
             players[0] = new Pyramid_Player <char> (player1Name, 'X');
             break;
         case 2:
-            players[0] = new Pyramid_Random_Player <char> ('X');
+            players[0] = new Pyramid_Random_Player <char> (player1Name,'X');
             break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -118,7 +118,7 @@ int game1(){
             players[1] = new Pyramid_Player <char>(player2Name, 'O');
             break;
         case 2:
-            players[1] = new Pyramid_Random_Player<char>('O');
+            players[1] = new Pyramid_Random_Player<char>(player2Name,'O');
             break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
@@ -159,7 +159,7 @@ int game2() {
             players[0] = new Four_in_a_row_player <char> (player1Name, 'X');
             break;
         case 2:
-            players[0] = new Four_in_a_row_random_player <char> ('X');
+            players[0] = new Four_in_a_row_random_player <char> (player1Name, 'X');
             break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -177,7 +177,7 @@ int game2() {
             players[1] = new Four_in_a_row_player <char>(player2Name, 'O');
             break;
         case 2:
-            players[1] = new Four_in_a_row_random_player<char>('O');
+            players[1] = new Four_in_a_row_random_player<char>(player2Name, 'O');
             break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
@@ -384,7 +384,7 @@ int game5() {
             players[0] = new Numerical_Tic_Tac_Toe_player <int> (player1Name,0);
             break;
         case 2:
-            players[0] = new Numerical_Tic_Tac_Toe_random_player <int> (0) ;
+            players[0] = new Numerical_Tic_Tac_Toe_random_player <int> (player1Name, 0) ;
             break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -406,7 +406,7 @@ int game5() {
             players[1] = new Numerical_Tic_Tac_Toe_player <int>(player2Name, 0);
             break;
         case 2:
-            players[1] = new Numerical_Tic_Tac_Toe_random_player<int>(0);
+            players[1] = new Numerical_Tic_Tac_Toe_random_player<int>(player2Name, 0);
             break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
@@ -515,7 +515,7 @@ int game7() {
             players[0] = new _4x4_Tic_Tac_Toe_Player <char> (player1Name, 'X');
             break;
         case 2:
-            players[0] = new _4x4_Tic_Tac_Toe_Random_Player <char> ('X');
+            players[0] = new _4x4_Tic_Tac_Toe_Random_Player <char> (player1Name,'X');
             break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -537,7 +537,7 @@ int game7() {
             players[1] = new _4x4_Tic_Tac_Toe_Player <char>(player2Name, 'O');
             break;
         case 2:
-            players[1] = new _4x4_Tic_Tac_Toe_Random_Player<char>('O');
+            players[1] = new _4x4_Tic_Tac_Toe_Random_Player<char>(player2Name,'O');
             break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
