@@ -8,6 +8,9 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 template <typename T>
@@ -39,7 +42,6 @@ public:
         } while (true);
     }
 };
-
 
 template <typename T>
 class WordTicTacToe : public Board<T> {
@@ -151,6 +153,23 @@ public:
 
     bool game_is_over() override {
         return is_win() || is_draw();
+    }
+};
+
+// ConcreteRandomPlayer class implementing the pure virtual function 'getmove'
+template <typename T>
+class ConcreteRandomPlayer : public RandomPlayer<T> {
+private:
+    int dimension; // Board dimension
+public:
+    ConcreteRandomPlayer(T symbol, int dim) : RandomPlayer<T>(symbol), dimension(dim) {
+        srand(static_cast<unsigned int>(time(nullptr))); // Seed random number generator
+    }
+
+    void getmove(int& x, int& y) override {
+        x = rand() % dimension;  // Generate random row
+        y = rand() % dimension;  // Generate random column
+        cout << this->getname() << " chooses position (" << x + 1 << ", " << y + 1 << ")" << endl;
     }
 };
 

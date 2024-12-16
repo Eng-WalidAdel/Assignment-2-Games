@@ -216,7 +216,7 @@ int game3() {
             players[0] = new X5_O5_Player<char>(playerXName, 'X');
         break;
         case 2:
-            players[0] = new X5_O5_Random_Player<char>(playerXName,'X');
+//            players[0] = new X5_O5_Random_Player<char>(playerXName,'X');              ///////////////////
         break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -230,7 +230,7 @@ int game3() {
             players[1] = new X5_O5_Player<char>(player2Name, 'O');
         break;
         case 2:
-            players[1] = new X5_O5_Random_Player<char>(player2Name,'O');
+//            players[1] = new X5_O5_Random_Player<char>(player2Name,'O');
         break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
@@ -347,6 +347,70 @@ int game4() {
 //
 //        turn = 1 - turn;
 //    }
+    cout << "Welcome to Word Tic-Tac-Toe Game! :)\n";
+
+    // Game parameters
+    int rows = 3, cols = 3; // Fixed board dimensions
+    string dictionary_file = "dict.txt"; // File containing valid 3-letter words
+
+    // Initialize board
+    Board<char>* B = new WordTicTacToe<char>(rows, cols, dictionary_file);
+
+    Player<char>* players[2];
+    string player1Name, player2Name;
+
+    // Set up Player 1
+    switch (valid_choice("1")) {
+        case 1: {
+            cout << "Enter Player 1 name: ";
+            cin >> player1Name;
+            players[0] = new HumanPlayer<char>(player1Name);
+            break;
+        }
+        case 2: {
+            players[0] = new ConcreteRandomPlayer<char>('X', rows);
+            break;
+        }
+        default: {
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+            delete B;
+            return 1;
+        }
+    }
+    players[0]->setBoard(B);
+
+    // Set up Player 2
+    switch (valid_choice("2")) {
+        case 1: {
+            cout << "Enter Player 2 name: ";
+            cin >> player2Name;
+            players[1] = new HumanPlayer<char>(player2Name);
+            break;
+        }
+        case 2: {
+            players[1] = new ConcreteRandomPlayer<char>('O', rows);
+            break;
+        }
+        default: {
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+            delete players[0];
+            delete B;
+            return 1;
+        }
+    }
+    players[1]->setBoard(B);
+
+    // Create the game manager and run the game
+    GameManager<char> x_o_game(B, players);
+    x_o_game.run();
+
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+
+    cout << "Thank you for playing Word Tic-Tac-Toe!\n";
     return 0;
 }
 
@@ -427,7 +491,7 @@ int game6() {
             players[0] = new X6_O6_Player<char>(playerXName, 'X');
         break;
         case 2:
-            players[0] = new X6_O6_Random_Player<char>(playerXName,'X');
+//            players[0] = new X6_O6_Random_Player<char>(playerXName,'X');          ////////////////////
         break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -442,7 +506,7 @@ int game6() {
             players[1] = new X_O_Player<char>(player2Name, 'O');
         break;
         case 2:
-            players[1] = new X_O_Random_Player<char>(player2Name,'O');
+//            players[1] = new X_O_Random_Player<char>(player2Name,'O');
         break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
@@ -539,7 +603,7 @@ int game8() {
             players[0] = new X_O_Player<char>(playerXName, 'X');
         break;
         case 2:
-            players[0] = new X_O_Random_Player<char>(playerXName,'X');
+//            players[0] = new X_O_Random_Player<char>(playerXName,'X');
         break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -554,7 +618,7 @@ int game8() {
             players[1] = new X_O_Player<char>(player2Name, 'O');
         break;
         case 2:
-            players[1] = new X_O_Random_Player<char>(player2Name,'O');
+//            players[1] = new X_O_Random_Player<char>(player2Name,'O');
         break;
         default:
             cout << "Invalid choice for Player 2. Exiting the game.\n";
