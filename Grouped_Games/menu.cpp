@@ -414,7 +414,7 @@ int game5() {
     }
     players[1]->setBoard(B);
 
-    // Create the game manager and run the game
+    // Create the game manager and run the game..
     GameManager<int> x_o_game (B, players);
     x_o_game.run();
 
