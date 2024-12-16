@@ -49,8 +49,8 @@ cmake_ninja_workdir = D$:/Games$ Assignment/cmake-build-debug/
 
 build cmake_object_order_depends_target_Games_Assignment: phony || .
 
-build CMakeFiles/Games_Assignment.dir/main.cpp.obj: CXX_COMPILER__Games_Assignment_unscanned_Debug D$:/Games$ Assignment/main.cpp || cmake_object_order_depends_target_Games_Assignment
-  DEP_FILE = CMakeFiles\Games_Assignment.dir\main.cpp.obj.d
+build CMakeFiles/Games_Assignment.dir/main1.cpp.obj: CXX_COMPILER__Games_Assignment_unscanned_Debug D$:/Games$ Assignment/main1.cpp || cmake_object_order_depends_target_Games_Assignment
+  DEP_FILE = CMakeFiles\Games_Assignment.dir\main1.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -I"D:/Games Assignment/."
   OBJECT_DIR = CMakeFiles\Games_Assignment.dir
@@ -64,7 +64,7 @@ build CMakeFiles/Games_Assignment.dir/main.cpp.obj: CXX_COMPILER__Games_Assignme
 #############################################
 # Link the executable Games_Assignment.exe
 
-build Games_Assignment.exe: CXX_EXECUTABLE_LINKER__Games_Assignment_Debug CMakeFiles/Games_Assignment.dir/main.cpp.obj
+build Games_Assignment.exe: CXX_EXECUTABLE_LINKER__Games_Assignment_Debug CMakeFiles/Games_Assignment.dir/main1.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Games_Assignment.dir

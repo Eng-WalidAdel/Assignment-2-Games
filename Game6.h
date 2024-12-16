@@ -7,9 +7,9 @@
 #include "BoardGame_Classes.h"
 
 template <typename T>
-class X_O_Board:public Board<T> {
+class X6_O6_Board:public Board<T> {
 public:
-    X_O_Board ();
+    X6_O6_Board ();
     bool update_board (int x , int y , T mark) override;
     void display_board () override;
     bool is_win() override ;
@@ -38,7 +38,7 @@ public:
 
 //========================== IMPLEMENTATION ===========================================
 template <typename T>
-X_O_Board<T>::X_O_Board() {
+X6_O6_Board<T>::X6_O6_Board() {
     this->rows = this->columns = 5;
     this->board = new char*[this->rows];
 
@@ -51,7 +51,7 @@ X_O_Board<T>::X_O_Board() {
     this->n_moves = 0;
 }
 template <typename T>
-bool X_O_Board<T>::update_board(int x, int y, T mark)  {
+bool X6_O6_Board<T>::update_board(int x, int y, T mark)  {
     // Only update if move is valid
     if (!(x < 0 || x >= this->rows || y < 0 || y >= this->columns) && (this->board[x][y] == 0|| mark == 0)) {
         if (mark == 0){
@@ -68,7 +68,7 @@ bool X_O_Board<T>::update_board(int x, int y, T mark)  {
     return false;
 }
 template <typename T>
-void X_O_Board<T>::display_board()  {
+void X6_O6_Board<T>::display_board()  {
     for (int i = 0; i < this->rows; i++) {
         cout << "\n| ";
         for (int j = 0; j < this->columns; j++) {
@@ -82,7 +82,7 @@ void X_O_Board<T>::display_board()  {
 
 template <typename T>
 
-bool X_O_Board<T>::is_win()  {
+bool X6_O6_Board<T>::is_win()  {
 
     static bool p_win = false;
     if(p_win) {return true;}

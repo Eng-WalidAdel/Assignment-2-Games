@@ -1,6 +1,6 @@
 
-#ifndef _5X5X_O_H
-#define _5X5X_O_H
+#ifndef _GAME88_H
+#define _GAME88_H
 
 #include <iomanip>
 
@@ -106,6 +106,11 @@ bool X5_O5_Board<T>::is_win()  {
     return false;
 
 }
+
+bool isValid_board(int x, int y) {
+
+}
+
 
 template <typename T>
 bool X5_O5_Board<T>::is_draw() {

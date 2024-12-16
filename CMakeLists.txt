@@ -8,6 +8,6 @@ include_directories(.)
 add_executable(Games_Assignment
 #        implementation.cpp
         implementation.h
-        main.cpp
+        main1.cpp
 #        "Assignment demo without AI Bonus/implem_Walid.cpp"
 )

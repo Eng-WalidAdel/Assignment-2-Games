@@ -1,7 +1,9 @@
 #include <iostream>
+
 #include "BoardGame_Classes.h"
-//#include "5x5X_O.h"
-#include"Game6.h"
+#include "5x5X_O.h"
+#include "Game6.h"
+//#include"Game8.h"
 
 
 using namespace std;
@@ -9,7 +11,9 @@ using namespace std;
 int main() {
     int choice;
     Player<char>* players[2];
-    X_O_Board<char>* B = new X_O_Board<char>();
+    auto* B = new X5_O5_Board<char>();
+
+
     string playerXName, player2Name;
 
     cout << "Welcome to FCAI X-O Game. :)\n";
