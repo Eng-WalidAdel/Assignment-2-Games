@@ -1,3 +1,0 @@
-D:/Games Assignment/cmake-build-debug/CMakeFiles/Games_Assignment.dir
-D:/Games Assignment/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Games Assignment/cmake-build-debug/CMakeFiles/rebuild_cache.dir

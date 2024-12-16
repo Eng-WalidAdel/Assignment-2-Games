@@ -21,6 +21,7 @@ int game8();
 int valid_choice(string);
 
 void displayMenu() {
+
     cout << "\n========== Game Menu ==========" << endl;
     cout << "1. Game 1" << endl;
     cout << "2. Game 2" << endl;
@@ -91,7 +92,7 @@ int game1(){
 
     string player1Name, player2Name;
 
-    cout << "Welcome to Pyramic Tic-Tac-Toe Game. :)\n";
+    cout << "Welcome to Pyramid Tic-Tac-Toe Game. :)\n";
 
     // Set up player 1
     switch(valid_choice("1")) {
@@ -199,24 +200,18 @@ int game2() {
 }
 
 int game3() {
-    int choice;
     Player<char>* players[2];
     auto* B = new X5_O5_Board<char>();
 
 
     string playerXName, player2Name;
 
-    cout << "Welcome to FCAI X-O Game. :)\n";
+    cout << "Welcome to 5 x 5 Tic Tac Toe Game. :)\n";
 
     // Set up player 1
-    cout << "Enter Player X name: ";
-    cin >> playerXName;
-    cout << "Choose Player X type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             players[0] = new X5_O5_Player<char>(playerXName, 'X');
         break;
@@ -229,14 +224,8 @@ int game3() {
     }
 
     // Set up player 2
-    cout << "Enter Player 2 name: ";
-    cin >> player2Name;
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+    switch(valid_choice("2")) {
         case 1:
             players[1] = new X5_O5_Player<char>(player2Name, 'O');
         break;
@@ -366,18 +355,14 @@ int game5() {
     Player<int>* players[2];
     Board <int> * B = new Numerical_Tic_Tac_Toe_Board <int>;
 
-    int choice;
     string player1Name, player2Name;
 
     cout << "Welcome to Numerical_Tic_Tac_Toe Game. :)\n";
 
     // Set up player 1
-    cout << "Choose Player 1 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             cout << "Enter Player 1 name:";
             cin >> player1Name;
@@ -394,12 +379,9 @@ int game5() {
     players[0]->setBoard(B);
 
     // Set up player 2
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("2")) {
         case 1:
             cout << "Enter Player 1 name:";
             cin >> player2Name;
@@ -429,24 +411,18 @@ int game5() {
 
 int game6() {
     cout << "\nYou chose Game 6!" << endl;
-    int choice;
     Player<char>* players[2];
     auto* B = new X6_O6_Board<char>();
 
 
     string playerXName, player2Name;
 
-    cout << "Welcome to FCAI X-O Game. :)\n";
+    cout << "Welcome to Misere Tic Tac Toe Game. :)\n";
 
     // Set up player 1
-    cout << "Enter Player X name: ";
-    cin >> playerXName;
-    cout << "Choose Player X type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             players[0] = new X6_O6_Player<char>(playerXName, 'X');
         break;
@@ -459,14 +435,9 @@ int game6() {
     }
 
     // Set up player 2
-    cout << "Enter Player 2 name: ";
-    cin >> player2Name;
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("2")) {
         case 1:
             players[1] = new X_O_Player<char>(player2Name, 'O');
         break;
@@ -497,18 +468,14 @@ int game7() {
     Player<char>* players[2];
     Board <char> * B = new _4x4_Tic_Tac_Toe_Board <char>();
 
-    int choice;
     string player1Name, player2Name;
 
     cout << "Welcome to 4 x 4 Tic-Tac-Toe Game. :)\n";
 
     // Set up player 1
-    cout << "Choose Player 1 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             cout << "Enter Player 1 name:";
             cin >> player1Name;
@@ -525,12 +492,8 @@ int game7() {
     players[0]->setBoard(B);
 
     // Set up player 2
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+    switch(valid_choice("2")) {
         case 1:
             cout << "Enter Player 1 name:";
             cin >> player2Name;
@@ -560,24 +523,18 @@ int game7() {
 
 int game8() {
     cout << "\nYou chose Game 8!" << endl;
-    int choice;
     Player<char>* players[2];
     auto* B = new Ultimate_Board<char>();
 
 
     string playerXName, player2Name;
 
-    cout << "Welcome to FCAI X-O Game. :)\n";
+    cout << "Welcome to Ultimate tic tac toe Game. :)\n";
 
     // Set up player 1
-    cout << "Enter Player X name: ";
-    cin >> playerXName;
-    cout << "Choose Player X type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("1")) {
         case 1:
             players[0] = new X_O_Player<char>(playerXName, 'X');
         break;
@@ -590,14 +547,9 @@ int game8() {
     }
 
     // Set up player 2
-    cout << "Enter Player 2 name: ";
-    cin >> player2Name;
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
 
-    switch(choice) {
+
+    switch(valid_choice("2")) {
         case 1:
             players[1] = new X_O_Player<char>(player2Name, 'O');
         break;
