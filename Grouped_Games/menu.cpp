@@ -49,6 +49,7 @@ int main() {
         while (true) {
             displayMenu();
             cin >> choice;
+            cout << endl;
 
             // Check if input is valid
             if (cin.fail()) {
@@ -86,13 +87,15 @@ int main() {
 
 
 int game1(){
-    cout << "\nYou chose Game 1!" << endl;
     Player<char>* players[2];
     Board <char> * B = new Pyramid_Board <char>();
 
     string player1Name, player2Name;
 
     cout << "Welcome to Pyramid Tic-Tac-Toe Game. :)\n";
+    cout << endl;
+    cout << "Winning: The first player to get three(X,O)-in-a-row vertically, horizontally, or diagonally wins."<<endl;
+    cout << endl;
 
     // Set up player 1
     switch(valid_choice("1")) {
@@ -141,7 +144,7 @@ int game1(){
 }
 
 int game2() {
-    cout << "\nYou chose Game 2!" << endl;
+
     Player<char>* players[2];
     Board <char> * B = new Four_in_a_row_Board <char>();
 
@@ -149,6 +152,12 @@ int game2() {
     string player1Name, player2Name;
 
     cout << "Welcome to Connect Four X-O Game. :)\n";
+    cout << endl;
+    cout <<"Rules: The first player places an X in the bottom square of any column. Taking turns, players make\ntheir mark in any column, as long as it is in the lowest square possible. See image below for an\n"
+           "example of possible first six moves."<<endl;
+    cout << endl;
+    cout << "Winning: The first player to get four-in-a-row horizontally, or diagonally wins." <<endl;
+    cout << endl;
 
     // Set up player 1
 
@@ -200,6 +209,7 @@ int game2() {
 }
 
 int game3() {
+
     Player<char>* players[2];
     auto* B = new X5_O5_Board<char>();
 
@@ -207,6 +217,17 @@ int game3() {
     string playerXName, player2Name;
 
     cout << "Welcome to 5 x 5 Tic Tac Toe Game. :)\n";
+    cout << endl;
+    cout << "Rules: Players take turns placing an X or an O in\n"
+            "one of the squares until all the squares except one\n"
+            "are filled. (Each player has 12 turns for a total of\n"
+            "24 squares.)"<<endl;
+    cout << endl;
+    cout << "Winning: Count the number of three-in-a-rows\n"
+            "each player has. Sequences can be vertically, horizontally, or diagonally. Whoever has the most, wins.\nCan one mark be counted in more than one"
+            "three-in-a-row sequence?\nDecide ahead of time, yes or no. It is easier in implementation to allow\n"
+            "counting more than once."<<endl;
+    cout << endl;
 
     // Set up player 1
 
@@ -254,7 +275,13 @@ int game3() {
 
 int game4() {
     cout << "Welcome to Word Tic-Tac-Toe Game!:)\n";
-
+    cout << endl;
+    cout << "Rules: Each player takes turns placing one letter on the\n"
+            "board. A player must try to form a valid word with each\n"
+            "move. Players can build upon existing letters to form words, provided that the resulting sequence is\n"
+            "a valid word."<<endl;
+    cout << endl;
+    cout << "Winning: The game is won by forming a valid word horizontally, vertically, or diagonally."<<endl;
     // Game parameters
     ifstream file1;
     int rows = 3, cols = 3; // Fixed board dimensions
@@ -336,13 +363,21 @@ int game4() {
 }
 
 int game5() {
-    cout << "\nYou chose Game 5!" << endl;
     Player<int>* players[2];
     Board <int> * B = new Numerical_Tic_Tac_Toe_Board <int>;
 
     string player1Name, player2Name;
 
     cout << "Welcome to Numerical_Tic_Tac_Toe Game. :)\n";
+    cout << endl;
+    cout << "Rules: Player 1 typically starts and uses odd numbers\n"
+            "(1, 3, 5, 7, 9), while Player 2 uses even numbers (2, 4, 6, 8). Players alternate turns, placing one number in an\n"
+            "empty cell on the board. Each number can only be used\n"
+            "once." << endl;
+    cout << endl;
+    cout << "Winning: A player by placing three numbers in a row, column, or diagonal that add up to 15.\n"
+            "If cells are filled without achieving the sum of 15 in any line,\nthe game ends in a draw."<<endl;
+    cout << endl;
 
     // Set up player 1
 
@@ -395,7 +430,6 @@ int game5() {
 }
 
 int game6() {
-    cout << "\nYou chose Game 6!" << endl;
     Player<char>* players[2];
     auto* B = new X6_O6_Board<char>();
 
@@ -403,6 +437,14 @@ int game6() {
     string playerXName, player2Name;
 
     cout << "Welcome to Misere Tic Tac Toe Game. :)\n";
+    cout << endl;
+    cout << "Rules: The game is played on a standard 3x3 Tic-Tac-Toe\n"
+            "grid. The goal is to avoid placing three of your marks in a\n"
+            "row, column, or diagonal. The player who ends up with\n"
+            "three marks in a row loses the game. If all cells are filled\n"
+            "without either player aligning three marks in a row,\nthe"
+            "game ends in a draw."<<endl;
+    cout << endl;
 
     // Set up player 1
 
@@ -449,13 +491,22 @@ int game6() {
 }
 
 int game7() {
-    cout << "\nYou chose Game 7!" << endl;
     Player<char>* players[2];
     Board <char> * B = new _4x4_Tic_Tac_Toe_Board <char>();
 
     string player1Name, player2Name;
 
     cout << "Welcome to 4 x 4 Tic-Tac-Toe Game. :)\n";
+    cout << endl;
+    cout << "Rules: Players alternate turns, moving one of their tokens to\n"
+            "an immediately adjacent open square. Tokens can be moved\n"
+            "horizontally or vertically but not diagonally. Tokens may not jump over other tokens. The goal is to\n"
+            "align three of your tokens in a row. This can be achieved\n"
+            "horizontally, vertically, or diagonally."<<endl;
+    cout << endl;
+    cout << "Winning: The first player to get three tokens in a row wins"
+            "the game.\nThe alignment can be in any direction: horizontal, vertical, or diagonal."<<endl;
+    cout << endl;
 
     // Set up player 1
 
@@ -507,7 +558,6 @@ int game7() {
 }
 
 int game8() {
-    cout << "\nYou chose Game 8!" << endl;
     Player<char>* players[2];
     auto* B = new Ultimate_Board<char>();
 
@@ -515,6 +565,16 @@ int game8() {
     string playerXName, player2Name;
 
     cout << "Welcome to Ultimate tic tac toe Game. :)\n";
+    cout << endl;
+    cout << "Player 1 starts by choosing any of the\n"
+            "nine smaller Tic Tac Toe boards to play on. Players alternate turns, playing Tic Tac Toe on"
+            "the smaller boards\n.The winner of each smaller"
+            "board claims that space on the main board.\nThe"
+            "winner of the smaller board replaces that board\n"
+            "with their symbol (X or O) on the main board.\n\nWinning: The first player to win three smaller boards in a row on the main 3x3 grid wins the\n"
+            "Ultimate Tic Tac Toe game. The winning row on the main board can be horizontal, vertical, or\n"
+            "diagonal."<<endl;
+    cout << endl;
 
     // Set up player 1
 
