@@ -105,6 +105,8 @@ int game1(){
             players[0] = new Pyramid_Player <char> (player1Name, 'X');
             break;
         case 2:
+            cout << "Enter Player 1 name:";
+        cin >> player1Name;
             players[0] = new Pyramid_Random_Player <char> (player1Name,'X');
             break;
         default:
@@ -122,6 +124,8 @@ int game1(){
             players[1] = new Pyramid_Player <char>(player2Name, 'O');
             break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new Pyramid_Random_Player<char>(player2Name,'O');
             break;
         default:
@@ -169,9 +173,12 @@ int game2() {
             players[0] = new Four_in_a_row_player <char> (player1Name, 'X');
             break;
         case 2:
+            cout << "Enter Player 1 name:";
+        cin >> player1Name;
             players[0] = new Four_in_a_row_random_player <char> (player1Name, 'X');
             break;
         default:
+
             cout << "Invalid choice for Player 1. Exiting the game.\n";
             return 1;
     }
@@ -187,6 +194,8 @@ int game2() {
             players[1] = new Four_in_a_row_player <char>(player2Name, 'O');
             break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new Four_in_a_row_random_player<char>(player2Name, 'O');
             break;
         default:
@@ -234,10 +243,14 @@ int game3() {
 
     switch(valid_choice("1")) {
         case 1:
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
             players[0] = new X5_O5_Player<char>(playerXName, 'X');
         break;
         case 2:
-//            players[0] = new X5_O5_Random_Player<char>(playerXName,'X');              ///////////////////
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
+           players[0] = new X5_O5_Random_Player<char>(playerXName,'X');              ///////////////////
         break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -248,9 +261,13 @@ int game3() {
 
     switch(valid_choice("2")) {
         case 1:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X5_O5_Player<char>(player2Name, 'O');
         break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X5_O5_Random_Player<char>(player2Name,'O');
         break;
         default:
@@ -316,6 +333,8 @@ int game4() {
             break;
         }
         case 2: {
+            cout << "Enter Player 1 name:";
+            cin >> player1Name;
             players[0] = new ConcreteRandomPlayer<char>(player1Name,'X', rows);
             break;
         }
@@ -336,6 +355,8 @@ int game4() {
             break;
         }
         case 2: {
+            cout << "Enter Player 2 name:";
+            cin >> player2Name;
             players[1] = new ConcreteRandomPlayer<char>(player2Name,'O', rows);
             break;
         }
@@ -389,6 +410,8 @@ int game5() {
             players[0] = new Numerical_Tic_Tac_Toe_player <int> (player1Name,0);
             break;
         case 2:
+            cout << "Enter Player 1 name:";
+        cin >> player1Name;
             players[0] = new Numerical_Tic_Tac_Toe_random_player <int> (player1Name, 0) ;
             break;
         default:
@@ -403,11 +426,13 @@ int game5() {
 
     switch(valid_choice("2")) {
         case 1:
-            cout << "Enter Player 1 name:";
+            cout << "Enter Player 2 name:";
             cin >> player2Name;
             players[1] = new Numerical_Tic_Tac_Toe_player <int>(player2Name, 0);
             break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new Numerical_Tic_Tac_Toe_random_player<int>(player2Name, 0);
             break;
         default:
@@ -451,10 +476,14 @@ int game6() {
 
     switch(valid_choice("1")) {
         case 1:
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
             players[0] = new X6_O6_Player<char>(playerXName, 'X');
         break;
         case 2:
-//            players[0] = new X6_O6_Random_Player<char>(playerXName,'X');          ////////////////////
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
+           players[0] = new X6_O6_Random_Player<char>(playerXName,'X');          ////////////////////
         break;
         default:
             cout << "Invalid choice for Player 1. Exiting the game.\n";
@@ -466,9 +495,13 @@ int game6() {
 
     switch(valid_choice("2")) {
         case 1:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X6_O6_Player<char>(player2Name, 'O');
         break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X6_O6_Random_Player<char>(player2Name,'O');
         break;
         default:
@@ -518,6 +551,8 @@ int game7() {
             players[0] = new _4x4_Tic_Tac_Toe_Player <char> (player1Name, 'X');
             break;
         case 2:
+            cout << "Enter Player 1 name:";
+        cin >> player1Name;
             players[0] = new _4x4_Tic_Tac_Toe_Random_Player <char> (player1Name,'X');
             break;
         default:
@@ -536,6 +571,8 @@ int game7() {
             players[1] = new _4x4_Tic_Tac_Toe_Player <char>(player2Name, 'O');
             break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new _4x4_Tic_Tac_Toe_Random_Player<char>(player2Name,'O');
             break;
         default:
@@ -581,9 +618,13 @@ int game8() {
 
     switch(valid_choice("1")) {
         case 1:
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
             players[0] = new X_O_Player<char>(playerXName, 'X');
         break;
         case 2:
+            cout << "Enter Player 1 name:";
+        cin >> playerXName;
             players[0] = new X_O_Random_Player<char>(playerXName,'X');
         break;
         default:
@@ -596,9 +637,13 @@ int game8() {
 
     switch(valid_choice("2")) {
         case 1:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X_O_Player<char>(player2Name, 'O');
         break;
         case 2:
+            cout << "Enter Player 2 name:";
+        cin >> player2Name;
             players[1] = new X_O_Random_Player<char>(player2Name,'O');
         break;
         default:

@@ -8,10 +8,8 @@ include_directories("C:/Secondyear_firstsem/Assignment_2/Task_2_/GitHub_Games/Gr
 add_executable(Assignment_Demo
         3x3X_O.h
         BoardGame_Classes.h
-#        main.cpp
         menu.cpp
-        MinMaxPlayer.h
-#        P_Tic_Tac_Toe.cpp
+
         Pyramid_Tic_Tac_Toe.h
         5x5X_O.h
         Game6.h
