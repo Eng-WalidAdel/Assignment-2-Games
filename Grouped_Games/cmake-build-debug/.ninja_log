@@ -1,9 +1,3 @@
-# ninja log v6
-6	4579	7561060168150970	CMakeFiles/Assignment_Demo.dir/menu.cpp.obj	49905dd773480f5
-4583	5226	7561060213922112	Assignment_Demo.exe	7b68ecf665962094
-9	4824	7561061865897317	CMakeFiles/Assignment_Demo.dir/menu.cpp.obj	49905dd773480f5
-4825	5498	7561061914058840	Assignment_Demo.exe	7b68ecf665962094
-16	3885	7561066013184822	CMakeFiles/Assignment_Demo.dir/menu.cpp.obj	49905dd773480f5
-3885	4508	7561066051869349	Assignment_Demo.exe	7b68ecf665962094
+# ninja log v5
 14	3802	7561067245070872	CMakeFiles/Assignment_Demo.dir/menu.cpp.obj	49905dd773480f5
 3803	4462	7561067282955364	Assignment_Demo.exe	7b68ecf665962094
