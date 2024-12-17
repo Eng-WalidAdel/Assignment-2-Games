@@ -39,7 +39,7 @@ public:
 //========================== IMPLEMENTATION ===========================================
 template <typename T>
 X6_O6_Board<T>::X6_O6_Board() {
-    this->rows = this->columns = 5;
+    this->rows = this->columns = 3;
     this->board = new char*[this->rows];
 
     for (int i = 0; i < this->rows; i++) {
@@ -136,8 +136,8 @@ bool X6_O6_Board<T>::is_win()  {
 
 template <typename T>
 bool X6_O6_Board<T>::is_draw() {
-    if (this->n_moves == 25) {return true;}
-    return (this->n_moves >= 24 && !is_win());
+//    if (this->n_moves == 9) {return true;}
+    return (this->n_moves == 9 && !is_win());
 }
 template<typename T>
 bool X6_O6_Board<T>::game_is_over() {

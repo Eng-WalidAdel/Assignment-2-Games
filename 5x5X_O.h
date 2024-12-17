@@ -72,18 +72,37 @@ bool X5_O5_Board<T>::update_board(int x, int y, T mark)  {
 
     return false;
 }
+
 template <typename T>
-void X5_O5_Board<T>::display_board()  {
-    for (int i = 0; i < this->rows; i++) {
-        cout << "\n| ";
-        for (int j = 0; j < this->columns; j++) {
-            cout << "(" << i << "," << j << ")";
-            cout << setw(2) << this->board[i][j] << " |";
-        }
-        cout << "\n-----------------------------";
+void X5_O5_Board<T>::display_board() {
+    cout << "\n   "; // Header for column indices
+    for (int j = 0; j < this->columns; ++j) {
+        cout << "  " << j + 1 << "   ";
     }
-    cout << endl;
+    cout << "\n";
+
+    for (int i = 0; i < this->rows; ++i) {
+        cout << "   "; // Horizontal line for grid
+        for (int j = 0; j < this->columns; ++j) {
+            cout << "------";
+        }
+        cout << "-\n";
+
+        cout << " " << i + 1 << " "; // Row index
+        for (int j = 0; j < this->columns; ++j) {
+            cout << "|  " << (this->board[i][j] == 0 ? ' ' : this->board[i][j]) << "  ";
+        }
+        cout << "|\n";
+    }
+
+    cout << "   "; // Final horizontal line
+    for (int j = 0; j < this->columns; ++j) {
+        cout << "------";
+    }
+    cout << "-\n";
 }
+
+
 
 template <typename T>
 
