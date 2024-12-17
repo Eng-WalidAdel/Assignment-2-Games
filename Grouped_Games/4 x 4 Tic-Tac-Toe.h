@@ -401,9 +401,7 @@ void _4x4_Tic_Tac_Toe_Random_Player<T>::getmove(int& x, int& y) {
     this->current_coordinates.emplace_back(make_pair(x,y));
 
 
-
 }
-
 
 
 #endif //ASSIGNMENT_DEMO_4_X_4_TIC_TAC_TOE_H

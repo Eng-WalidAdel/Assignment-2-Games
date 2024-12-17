@@ -85,17 +85,31 @@ bool Ultimate_Board<T>::update_board(int x, int y, T mark)  {
     return false;
 }
 template <typename T>
-void Ultimate_Board<T>::display_board()  {
+void Ultimate_Board<T>::display_board() {
     for (int i = 0; i < this->rows; i++) {
-        cout << "\n| ";
         for (int j = 0; j < this->columns; j++) {
-            cout << "(" << i << "," << j << ")";
-            cout << setw(2) << this->board[i][j] << " |";
+            // Print the cell content
+            cout << " " << this->board[i][j] << " ";
+            // Add a vertical boundary for sub-grids
+            if ((j + 1) % 3 == 0 && j != this->columns - 1) {
+                cout << "||";
+            } else {
+                cout << "|";
+            }
         }
-        cout << "\n-----------------------------";
+        cout << endl;
+
+        // Add horizontal boundary after each row
+        if ((i + 1) % 3 == 0 && i != this->rows - 1) {
+            cout << string(39, '=') << endl; // Thicker line for sub-grid boundaries
+        } else {
+            cout << string(39, '-') << endl; // Regular line between rows
+        }
     }
     cout << endl;
 }
+
+
 
 template <typename T>
 
