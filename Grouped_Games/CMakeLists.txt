@@ -15,6 +15,7 @@ add_executable(Assignment_Demo
         Pyramid_Tic_Tac_Toe.h
         5x5X_O.h
         Game6.h
+        dic.txt
         Ultimate_Board.h
         Word_Tic_Tc_Toe.h
         Connect_Four.h

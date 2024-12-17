@@ -2,14 +2,7 @@
 #define _WORD_TIC_TAC_TOE_H
 
 #include "BoardGame_Classes.h"
-#include <unordered_set>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -20,13 +13,22 @@ public:
 
     void getmove(int& x, int& y) override {
         char letter;
+        while (true) {
+            cout << this->getname() << ", enter your move (row and column):";
+            cin >> x >> y;
 
-        cout << this->getname() << ", enter your move (row and column): ";
-        cin >> x >> y;
-        x--; y--;
+            // Check if input is valid
+            if (cin.fail() ||  x < 0 || x > 2 || y < 0 || y > 2) {
+                cin.clear(); // Clear the fail state
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                cout << "\nInvalid input. Please enter a valid choice (1 or 2).\n";
+            } else {
+                break; // Exit loop if input is valid
+            }
+        }
 
         do {
-            cout << "Enter the letter you want to place (A-Z or a-z): ";
+            cout << "\nEnter the letter you want to place (A-Z or a-z):";
             cin >> letter;
 
             if (letter >= 'a' && letter <= 'z') {
@@ -62,7 +64,9 @@ private:
         return word;
     }
 
+
     bool check_for_word(int x, int y) {
+
         static const vector<pair<int, int>> directions = {
                 {0, 1},
                 {0, -1},
@@ -162,14 +166,29 @@ class ConcreteRandomPlayer : public RandomPlayer<T> {
 private:
     int dimension; // Board dimension
 public:
-    ConcreteRandomPlayer(T symbol, int dim) : RandomPlayer<T>(symbol), dimension(dim) {
+    ConcreteRandomPlayer(string name,T symbol, int dim) : RandomPlayer<T>(name,symbol), dimension(dim) {
         srand(static_cast<unsigned int>(time(nullptr))); // Seed random number generator
     }
 
     void getmove(int& x, int& y) override {
+        vector<char> letters;
+
+        // Initialize vector with letters A to Z
+        for (char c = 'A'; c <= 'Z'; ++c) {
+            letters.push_back(c);
+        }
         x = rand() % dimension;  // Generate random row
         y = rand() % dimension;  // Generate random column
         cout << this->getname() << " chooses position (" << x + 1 << ", " << y + 1 << ")" << endl;
+
+        random_device rd;  // Seed for the random number engine
+        mt19937 gen(rd()); // Mersenne Twister engine
+        uniform_int_distribution<> dis(0, letters.size() - 1); // Distribution for indices
+
+        // Randomly select an element
+        int randomIndex = dis(gen); // Generate a random index
+
+        this->symbol = letters[randomIndex]; // Get the element at that index
     }
 };
 
